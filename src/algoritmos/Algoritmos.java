@@ -2,7 +2,7 @@ package algoritmos;
 
 public class Algoritmos {
 
-	public static int[][] dilatacion(int[][] imagen) {
+	public static int[][] dilatacion(int[][] imagen, int vecindario) {
 		int height = imagen.length;
 		int width = imagen[0].length;
 		
@@ -12,7 +12,7 @@ public class Algoritmos {
 		return matrizDilatada;
 	}
 	
-	public static int[][] erosion(int[][] imagen) {
+	public static int[][] erosion(int[][] imagen, int vecindario) {
 		int height = imagen.length;
 		int width = imagen[0].length;
 		

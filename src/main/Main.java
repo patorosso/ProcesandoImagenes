@@ -11,13 +11,14 @@ public class Main {
 	public static void main(String[] args) {
 		try {
 			int[][] imagen = null;
-			imagen = Archivo.LeerArchivo("./resources/in/cat2.pgm");
+			imagen = Archivo.LeerArchivo("./resources/in/binary_figures.pgm");
 
 			System.out.println("Imagen previa:\n");
 			System.out.println(Matriz.ToString(imagen));
 			System.out.println("\n\n----------------------------------\n\n");
-
-		int[][] imagenDilatada = Algoritmos.dilatacion(imagen);
+			
+			int vecindad = 3;
+			int[][] imagenDilatada = Algoritmos.dilatacion(imagen, vecindad);
 
 			System.out.println("Imagen post algoritmo:\n");
 			System.out.println(Matriz.ToString(imagenDilatada));
