@@ -1,9 +1,7 @@
 package algoritmos;
-
 import org.junit.Assert;
 import org.junit.Test;
 
-import algoritmos.Algoritmos;
 
 public class DilatacionTests {
 
