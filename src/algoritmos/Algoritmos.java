@@ -1,10 +1,8 @@
 package algoritmos;
 
-public class Algoritmos {
+import helpers.Constantes;
 
-	public static final int NEGRO = 0;
-	public static final int BLANCO = 255;
-	public static final int BIT_A_IGNORAR = 0;
+public class Algoritmos {
 
 	public static int[][] dilatacion(int[][] imagen, int[][] vecindad) {
 		int filas = imagen.length;
@@ -22,14 +20,14 @@ public class Algoritmos {
 				for (int vi = 0; vi < filasVecindad; vi++) {
 					for (int vj = 0; vj < columnasVecindad; vj++) {
 
-						if (vecindad[vi][vj] == BIT_A_IGNORAR)
+						if (vecindad[vi][vj] == Constantes.BIT_A_IGNORAR)
 							continue;
 
 						int ni = i + vi - vecindad.length / 2;
 						int nj = j + vj - vecindad[0].length / 2;
 
 						if (ni >= 0 && ni < filas && nj >= 0 && nj < columnas) {
-							if (imagen[ni][nj] == BLANCO) {
+							if (imagen[ni][nj] == Constantes.PIXEL_BLANCO) {
 								aplicarDilatacion = true;
 								break;
 							}
@@ -40,7 +38,7 @@ public class Algoritmos {
 						break;
 				}
 
-				resultado[i][j] = aplicarDilatacion ? BLANCO : NEGRO;
+				resultado[i][j] = aplicarDilatacion ? Constantes.PIXEL_BLANCO : Constantes.PIXEL_NEGRO;
 			}
 		}
 
@@ -63,14 +61,14 @@ public class Algoritmos {
 				for (int vi = 0; vi < filasVecindad; vi++) {
 					for (int vj = 0; vj < columnasVecindad; vj++) {
 
-						if (vecindad[vi][vj] == BIT_A_IGNORAR)
+						if (vecindad[vi][vj] == Constantes.BIT_A_IGNORAR)
 							continue;
 
 						int ni = i + vi - filasVecindad / 2;
 						int nj = j + vj - columnasVecindad / 2;
 
 						if (ni >= 0 && ni < filas && nj >= 0 && nj < columnas) {
-							if (imagen[ni][nj] == NEGRO) {
+							if (imagen[ni][nj] == Constantes.PIXEL_NEGRO) {
 								mantenerBlanco = false;
 								break;
 							}
@@ -84,7 +82,7 @@ public class Algoritmos {
 						break;
 				}
 
-				resultado[i][j] = mantenerBlanco ? BLANCO : NEGRO;
+				resultado[i][j] = mantenerBlanco ? Constantes.PIXEL_BLANCO : Constantes.PIXEL_NEGRO;
 			}
 		}
 

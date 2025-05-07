@@ -1,33 +1,28 @@
 package main;
-
+import helpers.*;
 import java.io.IOException;
-
 import algoritmos.Algoritmos;
-import archivo.Archivo;
-import matriz.Matriz;
 
 public class Main {
-
 	public static void main(String[] args) {
 		try {
-			int[][] imagen = null;
-			imagen = Archivo.LeerArchivo("./resources/in/binary_flower.pgm");
 
-			System.out.println("Imagen previa:\n");
-			System.out.println(Matriz.ToString(imagen));
-			System.out.println("\n\n----------------------------------\n\n");
+			int[][] imagen = Archivo.leerArchivo("./resources/in/texto_prueba.pgm");
+			int[][] vecindad = Matrices.getVecindad(Matrices.TipoVecindad.COMPLETA_10x10);
+//			int[][] vecindad = Matrices.getVecindad(Matrices.TipoVecindad.CRUZ_GRUESA_10x10);
+//			int[][] vecindad = Matrices.getVecindad(Matrices.TipoVecindad.DIAGONAL_ZIGZAG_10x10);
+//			int[][] vecindad = Matrices.getVecindad(Matrices.TipoVecindad.SEMICIRCULAR_INFERIOR_10x10);
+
+			int[][] imagenErosion = Algoritmos.erosion(imagen, vecindad);
+			int[][] imagenDilatacion = Algoritmos.dilatacion(imagen, vecindad);
+
+			Archivo.guardarPGM_P2(imagenErosion, "./resources/out/texto_prueba_erosion.pgm");
+			Archivo.guardarPGM_P2(imagenDilatacion, "./resources/out/texto_prueba_dilatacion.pgm");
 			
-			int[][] vecindad = {{1,1,1},{1,1,1},{1,1,1}};
-			int[][] imagenDilatada = Algoritmos.dilatacion(imagen, vecindad);
-
-			System.out.println("Imagen post algoritmo:\n");
-			System.out.println(Matriz.ToString(imagenDilatada));
-			Archivo.GuardarPGM_P2(imagenDilatada, "./resources/out/binary_flower_converted_inverted_2.pgm", 255);
+			System.out.println("[" + Fecha.getTiempo + "] \nImágenes creadas con éxito!");
 
 		} catch (IOException e) {
-			// TODO Bloque catch generado automaticamente
 			e.printStackTrace();
 		}
 	}
-
 }

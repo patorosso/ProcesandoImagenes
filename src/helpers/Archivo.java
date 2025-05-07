@@ -1,4 +1,4 @@
-package archivo;
+package helpers;
 
 import java.io.File;
 import java.io.FileInputStream;
@@ -9,7 +9,7 @@ import java.io.PrintWriter;
 
 public class Archivo {
 
-	public static int[][] LeerArchivo(String path) throws IOException {
+	public static int[][] leerArchivo(String path) throws IOException {
 		int[][] imagen = null;
 		String format;
 		int ancho, alto, valorMaximo;
@@ -28,16 +28,16 @@ public class Archivo {
 				scanner.nextLine();
 			}
 
-			// Leer ancho, alto y valor máximo del color
+			// Leer ancho, alto y valor mï¿½ximo del color
 			ancho = scanner.nextInt();
 			alto = scanner.nextInt();
-			valorMaximo = scanner.nextInt(); // Usualmente 255
+			valorMaximo = scanner.nextInt(); // 255 (blanco)
 
 			// Si es formato ASCII (P2)
 			if (format.equals("P2")) {
 				imagen = new int[alto][ancho];
 
-				// Leer los valores de los píxeles y llenar la matriz
+				// Leer los valores de los pï¿½xeles y llenar la matriz
 				for (int i = 0; i < alto; i++) {
 					for (int j = 0; j < ancho; j++) {
 						imagen[i][j] = scanner.nextInt();
@@ -47,15 +47,15 @@ public class Archivo {
 			// Si es formato binario (P5)
 			else if (format.equals("P5")) {
 				// Leer el resto en binario
-				fis.getChannel().position(fis.getChannel().position() + scanner.match().end()); // Saltar la parte leída
+				fis.getChannel().position(fis.getChannel().position() + scanner.match().end()); // Saltar la parte leï¿½da
 																								// por el scanner
 
 				// Inicializar la matriz
 				imagen = new int[alto][ancho];
 
-				 // Leer los valores de los píxeles como bytes y llenar la matriz
+				 // Leer los valores de los pï¿½xeles como bytes y llenar la matriz
                 byte[] pixelData = new byte[ancho * alto];
-                fis.read(pixelData);  // Leer los píxeles en un arreglo de bytes
+                fis.read(pixelData);  // Leer los pï¿½xeles en un arreglo de bytes
 
                 int index = 0;
                 for (int i = 0; i < alto; i++) {
@@ -71,7 +71,7 @@ public class Archivo {
 	}
 	
 	// Guardar la matriz en formato ASCII (P2)
-    public static void GuardarPGM_P2(int[][] imagen, String path, int valorMaximo) throws IOException {
+    public static void guardarPGM_P2(int[][] imagen, String path) throws IOException {
         int alto = imagen.length;
         int ancho = imagen[0].length;
 
@@ -79,9 +79,9 @@ public class Archivo {
             // Escribir la cabecera
             writer.println("P2");
             writer.println(ancho + " " + alto);
-            writer.println(valorMaximo);
+            writer.println(Constantes.PIXEL_BLANCO); // Valor max
 
-            // Escribir los valores de los píxeles
+            // Escribir los valores de los pï¿½xeles
             for (int i = 0; i < alto; i++) {
                 for (int j = 0; j < ancho; j++) {
                     writer.print(imagen[i][j] + " ");
@@ -92,16 +92,16 @@ public class Archivo {
     }
 
     // Guardar la matriz en formato binario (P5)
-    public static void GuardarPGM_P5(int[][] imagen, String path, int valorMaximo) throws IOException {
+    public static void guardarPGM_P5(int[][] imagen, String path) throws IOException {
         int alto = imagen.length;
         int ancho = imagen[0].length;
 
         try (FileOutputStream fos = new FileOutputStream(new File(path))) {
             // Escribir la cabecera
-            String header = "P5\n" + ancho + " " + alto + "\n" + valorMaximo + "\n";
+            String header = "P5\n" + ancho + " " + alto + "\n" + Constantes.PIXEL_BLANCO + "\n";
             fos.write(header.getBytes());
 
-            // Escribir los valores de los píxeles en binario
+            // Escribir los valores de los pï¿½xeles en binario
             for (int i = 0; i < alto; i++) {
                 for (int j = 0; j < ancho; j++) {
                     fos.write(imagen[i][j]);
