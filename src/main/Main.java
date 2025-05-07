@@ -9,13 +9,13 @@ public class Main {
 		try {
 			int[][] imagen = Archivo.leerArchivo("./resources/in/texto_prueba.pgm");
 			
-//			int[][] vecindad = Matrices.getVecindad(Matrices.TipoVecindad.COMPLETA_10x10);
+			int[][] vecindad = Matrices.getVecindad(Matrices.TipoVecindad.COMPLETA_10x10);
 //			int[][] vecindad = Matrices.getVecindad(Matrices.TipoVecindad.EFECTO_3D_15x15);
 //			int[][] vecindad = Matrices.getVecindad(Matrices.TipoVecindad.HORIZONTAL_1x20);
-			int[][] vecindad = Matrices.getVecindad(Matrices.TipoVecindad.VERTICAL_COL_20x1);
+//			int[][] vecindad = Matrices.getVecindad(Matrices.TipoVecindad.VERTICAL_COL_20x1);
 //			int[][] vecindad = Matrices.getVecindad(Matrices.TipoVecindad.CRUZ_GRUESA_10x10);
 //			int[][] vecindad = Matrices.getVecindad(Matrices.TipoVecindad.FLECHA_ARRIBA_10x10);
-//			int[][] vecindad = Matrices.getVecindad(Matrices.TipoVecindad.BORDE_IZQUIERDO_5x10);
+//			int[][] vecindad = Matrices.getVecindad(Matrices.TipoVecindad.BORDE_IZQUIERDO_10x5);
 //			int[][] vecindad = Matrices.getVecindad(Matrices.TipoVecindad.DIAGONAL_ZIGZAG_10x10);
 //			int[][] vecindad = Matrices.getVecindad(Matrices.TipoVecindad.PIRAMIDE_ARRIBA_10x10);
 //			int[][] vecindad = Matrices.getVecindad(Matrices.TipoVecindad.EXPLOSION_IZQUIERDA_10x10);

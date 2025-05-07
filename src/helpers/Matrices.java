@@ -9,7 +9,7 @@ public class Matrices {
 		VERTICAL_COL_20x1,
 		CRUZ_GRUESA_10x10,
 		FLECHA_ARRIBA_10x10,
-		BORDE_IZQUIERDO_5x10,
+		BORDE_IZQUIERDO_10x5,
 		DIAGONAL_ZIGZAG_10x10,
 		PIRAMIDE_ARRIBA_10x10,
 		EXPLOSION_IZQUIERDA_10x10,
@@ -155,7 +155,7 @@ public class Matrices {
 					{1},
 					{1}
 				};
-			case BORDE_IZQUIERDO_5x10:
+			case BORDE_IZQUIERDO_10x5:
 				return new int[][] {
 					{1, 0, 0, 0, 0},
 					{1, 0, 0, 0, 0},
