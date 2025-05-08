@@ -21,11 +21,11 @@ public class Main {
 //			int[][] vecindad = Matrices.getVecindad(Matrices.TipoVecindad.EXPLOSION_IZQUIERDA_10x10);
 //			int[][] vecindad = Matrices.getVecindad(Matrices.TipoVecindad.SEMICIRCULAR_INFERIOR_10x10);
 
-			int[][] imagenErosion = Algoritmos.erosion(imagen, vecindad);
-			int[][] imagenDilatacion = Algoritmos.dilatacion(imagen, vecindad);
+			int[][] matrizErosion = Algoritmos.erosion(imagen, vecindad);
+			int[][] matrizDilatacion = Algoritmos.dilatacion(imagen, vecindad);
 
-			Archivo.guardarPGM_P2(imagenErosion, "./resources/out/texto_prueba_erosion.pgm");
-			Archivo.guardarPGM_P2(imagenDilatacion, "./resources/out/texto_prueba_dilatacion.pgm");
+			Archivo.guardarPGM_P2(matrizErosion, "./resources/out/texto_prueba_erosion.pgm");
+			Archivo.guardarPGM_P2(matrizDilatacion, "./resources/out/texto_prueba_dilatacion.pgm");
 			System.out.println("[" + Fecha.getTiempo + "] \nImágenes creadas con éxito!");
 
 		} catch (IOException e) {
