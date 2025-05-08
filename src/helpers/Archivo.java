@@ -9,7 +9,7 @@ import java.io.PrintWriter;
 
 public class Archivo {
 
-	public static int[][] leerArchivo(String path) throws IOException {
+	public static int[][] bajarArchivoAMatriz(String path) throws IOException {
 		int[][] imagen = null;
 		String format;
 		int ancho, alto, valorMaximo;

@@ -7,7 +7,7 @@ public class Main {
 	
 	public static void main(String[] args) {
 		try {
-			int[][] imagen = Archivo.leerArchivo("./resources/in/texto_prueba.pgm");
+			int[][] matrizDeLaImagen = Archivo.bajarArchivoAMatriz("./resources/in/texto_prueba.pgm");
 			
 			int[][] vecindad = Matrices.getVecindad(Matrices.TipoVecindad.COMPLETA_10x10);
 //			int[][] vecindad = Matrices.getVecindad(Matrices.TipoVecindad.EFECTO_3D_15x15);
@@ -21,8 +21,8 @@ public class Main {
 //			int[][] vecindad = Matrices.getVecindad(Matrices.TipoVecindad.EXPLOSION_IZQUIERDA_10x10);
 //			int[][] vecindad = Matrices.getVecindad(Matrices.TipoVecindad.SEMICIRCULAR_INFERIOR_10x10);
 
-			int[][] matrizErosion = Algoritmos.erosion(imagen, vecindad);
-			int[][] matrizDilatacion = Algoritmos.dilatacion(imagen, vecindad);
+			int[][] matrizErosion = Algoritmos.erosion(matrizDeLaImagen, vecindad);
+			int[][] matrizDilatacion = Algoritmos.dilatacion(matrizDeLaImagen, vecindad);
 
 			Archivo.guardarPGM_P2(matrizErosion, "./resources/out/texto_prueba_erosion.pgm");
 			Archivo.guardarPGM_P2(matrizDilatacion, "./resources/out/texto_prueba_dilatacion.pgm");
